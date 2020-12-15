@@ -7,7 +7,7 @@ TOPIC = "telemetry"
 settings = {
     "bootstrap.servers": "my-cluster-kafka-brokers:9092",
     "group.id": "mygroup",
-    "client.id": "client-1",
+    # "client.id": "client-1",
     "enable.auto.commit": True,
     "session.timeout.ms": 6000,
     "default.topic.config": {"auto.offset.reset": "smallest"},
@@ -27,7 +27,7 @@ try:
         if msg is None:
             continue
         elif not msg.error():
-            print("Received message: {0}".format(msg.value()))
+            # print("Received message: {0}".format(msg.value()))
             client.write_points([json.loads(msg.value().decode('utf-8'))])
         elif msg.error().code() == KafkaError._PARTITION_EOF:
             print(
