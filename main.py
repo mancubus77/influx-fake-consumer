@@ -1,5 +1,6 @@
 from confluent_kafka import Consumer, KafkaError
 from influxdb import InfluxDBClient
+import json
 
 TOPIC = "telemetry"
 
@@ -27,7 +28,7 @@ try:
             continue
         elif not msg.error():
             print("Received message: {0}".format(msg.value()))
-            client.write_points([msg.value()])
+            client.write_points([json.loads(msg.value().decode('utf-8'))])
         elif msg.error().code() == KafkaError._PARTITION_EOF:
             print(
                 "End of partition reached {0}/{1}".format(msg.topic(), msg.partition())
