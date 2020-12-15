@@ -17,7 +17,7 @@ c = Consumer(settings)
 
 c.subscribe([TOPIC])
 client = InfluxDBClient(
-    "http://vminsert-example-vmcluster-persistent", 8480, path="/insert/0/influx/"
+    "vminsert-example-vmcluster-persistent", 8480, path="/insert/0/influx"
 )
 
 
