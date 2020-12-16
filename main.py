@@ -20,6 +20,7 @@ client = InfluxDBClient(
     "vminsert-example-vmcluster-persistent", 8480, path="/insert/0/influx"
 )
 
+print("Hello message")
 
 try:
     while True:
